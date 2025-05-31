@@ -5,7 +5,7 @@ This project demonstrates a basic example of how to integrate a device with **[E
 We simulate a simple **multisensor** that sends temperature and humidity data to Eclipse Ditto.
 
 📷 For an overview of the platform's components, you can refer to the [Eclipse Ditto architecture diagram](https://www.eclipse.org/ditto/images/ditto-architecture.png). Ditto keeps a digital representation of this sensor and allows controlled interaction.
-![alt text](image.png)
+![alt text](images/image.png)
 
 ---
 
@@ -136,7 +136,7 @@ curl -sS -u ditto:ditto --location 'http://localhost:8080/api/2/things/my.test:o
 
 or via the UI:
 
-![alt text](image-2.png)
+![alt text](images/image-2.png)
 
 ---
 
@@ -169,7 +169,7 @@ curl -u ditto:ditto -X PUT   -H 'Content-Type: application/json'   --data '@exam
 
 ```
 You can see the Policy created in the UI: (Please, load the policy by its ID if it is not shown)
-![alt text](image-1.png)
+![alt text](images/image-1.png)
 
 Once created, this policy can then be assigned to the Thing using an API call or via the UI.
 
@@ -265,11 +265,11 @@ For easier visualization and testing, we will create the connection using the Ec
 3. Click the **Create** button
 4. Paste the full content of `examples/mqtt_connection.json` into the editor
 5. Click **Create** again to establish the connection
-![alt text](image-3.png)
+![alt text](images/image-3.png)
 This will activate the connection from Ditto to the local Mosquitto broker, allowing it to ingest MQTT messages and process them according to the defined mapping.
 
 You can verify that the connection was successfully established by checking the **Connection Status**, **Metrics**, and **Logs** tabs in the Ditto UI under the created connection's detail view.
-![alt text](image-4.png)
+![alt text](images/image-4.png)
 
 
 ### Payload Mapping Script
@@ -347,5 +347,5 @@ Once the simulation is running and messages are being published, you can observe
 * Open the **Incoming Thing Updates** tab
 
 Here, you will see the changes to the `temperature` and `humidity` features as they are received from the MQTT messages. This confirms that the entire flow—from the simulated device sending MQTT data, through the Ditto connection and mapping, to the final digital twin update—is working correctly.
-![alt text](image-5.png)
+![alt text](images/image-5.png)
 
