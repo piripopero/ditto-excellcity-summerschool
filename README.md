@@ -52,7 +52,6 @@ First, clone this repository:
 ```bash
 git clone https://github.com/piripopero/ditto-excellcity-summerschool.git
 cd ditto-excellcity-summerschool
-cd deployment
 ```
 
 Before starting the services, make sure to create the external Docker network required by the setup (if it hasn’t been created previously):
@@ -269,6 +268,7 @@ For easier visualization and testing, we will create the connection using the Ec
 This will activate the connection from Ditto to the local Mosquitto broker, allowing it to ingest MQTT messages and process them according to the defined mapping.
 
 You can verify that the connection was successfully established by checking the **Connection Status**, **Metrics**, and **Logs** tabs in the Ditto UI under the created connection's detail view.
+Click on Refresh if it is not appearing.
 ![alt text](images/image-4.png)
 
 
