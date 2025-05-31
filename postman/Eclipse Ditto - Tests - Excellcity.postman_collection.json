@@ -1,0 +1,98 @@
+{
+	"info": {
+		"_postman_id": "c80137ad-5abd-4ce4-b150-0ee3d618d9d0",
+		"name": "Eclipse Ditto - Tests - Excellcity",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12249691"
+	},
+	"item": [
+		{
+			"name": "Get Thing",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "demo3",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "demo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/2/things/my.test:octopus",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"2",
+						"things",
+						"my.test:octopus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Things",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/2/search/things/count",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"2",
+						"search",
+						"things",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Thing - SSE Live",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "text/event-stream",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/2/things/my.test:octopus",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"2",
+						"things",
+						"my.test:octopus"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

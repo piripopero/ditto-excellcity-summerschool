@@ -1,0 +1,69 @@
+{
+  "policyId": "my.test:policy_custom",
+  "imports": {},
+  "entries": {
+    "owner": {
+      "subjects": {
+        "nginx:ditto": {
+          "type": "nginx basic auth user"
+        }
+      },
+      "resources": {
+        "thing:/": {
+          "grant": [
+            "READ",
+            "WRITE"
+          ],
+          "revoke": []
+        },
+        "policy:/": {
+          "grant": [
+            "READ",
+            "WRITE"
+          ],
+          "revoke": []
+        },
+        "message:/": {
+          "grant": [
+            "READ",
+            "WRITE"
+          ],
+          "revoke": []
+        }
+      },
+      "importable": "implicit"
+    },
+    "temperature_reader": {
+      "subjects": {
+        "nginx:demo1": {
+          "type": "generated"
+        }
+      },
+      "resources": {
+        "thing:/features/temperature": {
+          "grant": [
+            "READ"
+          ],
+          "revoke": []
+        }
+      },
+      "importable": "implicit"
+    },
+    "humidity_reader": {
+      "subjects": {
+        "nginx:demo2": {
+          "type": "generated"
+        }
+      },
+      "resources": {
+        "thing:/features/humidity": {
+          "grant": [
+            "READ"
+          ],
+          "revoke": []
+        }
+      },
+      "importable": "implicit"
+    }
+  }
+}

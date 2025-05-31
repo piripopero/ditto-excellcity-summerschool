@@ -1,0 +1,20 @@
+{
+  "thingId": "my.test:octopus",
+  "policyId": "my.test:octopus",
+  "attributes": {
+    "name": "multisensor",
+    "type": "multisensor"
+  },
+  "features": {
+    "temperature": {
+      "properties": {
+        "value": 100.67
+      }
+    },
+    "humidity": {
+      "properties": {
+        "value": 120.9
+      }
+    }
+  }
+}

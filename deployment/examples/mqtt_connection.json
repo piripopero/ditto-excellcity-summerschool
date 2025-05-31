@@ -1,0 +1,47 @@
+{
+  "id": "ff9f2aac-7232-4fef-a249-3229160e7d8e",
+  "name": "MQTT 5 with JS mapping",
+  "connectionType": "mqtt-5",
+  "connectionStatus": "open",
+  "uri": "tcp://mosquitto:1883",
+  "sources": [
+    {
+      "addresses": [
+        "excellcity/#"
+      ],
+      "consumerCount": 1,
+      "qos": 0,
+      "authorizationContext": [
+        "nginx:ditto"
+      ],
+      "headerMapping": {
+        "content-type": "{{ header:content-type | fn:default('application/json') }}",
+        "reply-to": "{{header:reply-to}}",
+        "correlation-id": "{{header:correlation-id}}"
+      },
+      "payloadMapping": [
+        "javascript"
+      ],
+      "replyTarget": {
+        "enabled": false
+      }
+    }
+  ],
+  "targets": [],
+  "clientCount": 1,
+  "failoverEnabled": true,
+  "validateCertificates": true,
+  "processorPoolSize": 1,
+  "mappingDefinitions": {
+    "javascript": {
+      "mappingEngine": "JavaScript",
+      "options": {
+        "incomingScript": "function mapToDittoProtocolMsg(\r\n    headers,\r\n    textPayload,\r\n    bytePayload,\r\n    contentType\r\n) {\r\n    \r\n      const jsonString = String.fromCharCode.apply(null, new Uint8Array(bytePayload));\r\n    const jsonData = JSON.parse(jsonString); \r\n      const thingId = jsonData.thingId.split(':'); \r\n    const topic_array = headers[\"mqtt.topic\"].split(\"/\");\r\n    const thing_id_from_topic = topic_array[1];\r\n    const attr_name_from_topic = topic_array[3];\r\n\r\n    \r\n    //var jsonData = JSON.parse(textPayload);\r\n    const value = { \r\n        properties: {                \r\n            value: jsonData.value,\r\n          \r\n        } \r\n    };\r\n            \r\n      return Ditto.buildDittoProtocolMsg(\r\n        thingId[0], // your namespace \r\n        thingId[1], \r\n        'things', // we deal with a thing\r\n        'twin', // we want to update the twin\r\n        'commands', // create a command to update the twin\r\n        'modify', // modify the twin\r\n        '/features/' + attr_name_from_topic, // modify all features at once\r\n        headers, \r\n        value\r\n    );\r\n}",
+        "outgoingScript": "",
+        "loadBytebufferJS": "false",
+        "loadLongJS": "false"
+      }
+    }
+  },
+  "tags": []
+}
