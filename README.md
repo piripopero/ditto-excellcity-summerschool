@@ -32,7 +32,6 @@ docker compose -v
 docker version
 ```
 
-> ✅ Make sure you are using **Docker 24.0.x or higher** and **Docker Compose 2.24.x or higher**.
 
 ---
 
