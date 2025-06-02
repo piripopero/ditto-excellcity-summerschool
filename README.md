@@ -166,7 +166,7 @@ To create it via the API:
 curl -u ditto:ditto -X PUT   -H 'Content-Type: application/json'   --data '@examples/policy_3consumers.json'   'http://localhost:8080/api/2/policies/my.test:policy_custom'
 
 ```
-You can see the Policy created in the UI: (Please, load the policy by its ID if it is not shown)
+You can see the Policy created in the UI: (Please, load the policy by its ID **my.test:policy_custom** if it is not shown)
 ![alt text](images/image-1.png)
 
 Once created, this policy can then be assigned to the Thing using an API call or via the UI.
